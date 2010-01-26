@@ -16,7 +16,7 @@ start)
 ;;
 
 stop)
-	pkill kdc
+	pkill -x kdc
 ;;
 *)
 	echo "Usage: $0 {start|stop}"
