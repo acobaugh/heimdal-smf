@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
+<!--
+    $Id: openafs-server.xml 3 2009-07-22 17:54:16Z phalenor $
+-->
+<service_bundle type='manifest' name='bx:heimdal:ipropd-master'>
+
+	<service	name='bx/network/security/heimdal/ipropd-master
+		type='service'
+		version='1'>
+
+		<create_default_instance enabled='false' />
+
+		<dependency	name='filesystem'
+			grouping='require_all'
+			restart_on='none'
+			type='service'>
+			<service_fmri value='svc:/system/filesystem/local' />
+		</dependency>
+
+		<dependency name='net-physical'
+			grouping='require_all'
+			restart_on='none'
+			type='service'>
+			<service_fmri value='svc:/network/physical' />
+		</dependency>
+
+		<exec_method name='start'
+			type='method'
+			exec='/opt/bx/heimdal/sbin/heimdal-ipropd-master.method start'
+			timeout_seconds='300' />
+
+		<exec_method name='stop'
+			type='method'
+			exec='/opt/bx/heimdal/sbin/heimdal-ipropd-master.method stop'
+			timeout_seconds='60' />
+
+		<template>
+			<common_name>
+				<loctext xml:lang='C'>
+				Heimdal ipropd-master
+				</loctext>
+			</common_name>
+		</template>
+	</service>
+
+</service_bundle>
