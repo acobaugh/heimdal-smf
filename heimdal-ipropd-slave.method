@@ -7,17 +7,17 @@
 . /lib/svc/share/smf_include.sh
 
 PREFIX="/opt/bx/heimdal"
-MASTER="`svcprop -p Heimdal/master svc:/bx/network/security/ipropd-slave`"
+MASTER="`svcprop -p Heimdal/master svc:/bx/network/security/heimdal/ipropd-slave`"
 
 case "$1" in
 start)
 	LD_LIBRARY_PATH=/lib:/usr/lib:/usr/sfw/lib:/opt/sfw/lib \
-		$PREFIX/libexec/ipropd-slave --detach --hostname=$MASTER
+		$PREFIX/libexec/ipropd-slave $MASTER &
 # end of start method
 ;;
 
 stop)
-	pkill ipropd-slave
+	pkill -x ipropd-slave
 ;;
 *)
 	echo "Usage: $0 {start|stop}"
