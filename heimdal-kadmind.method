@@ -1,0 +1,25 @@
+#!/bin/sh
+
+#
+# $Id$
+#
+
+. /lib/svc/share/smf_include.sh
+
+PREFIX="/opt/bx/heimdal"
+
+case "$1" in
+start)
+	LD_LIBRARY_PATH=/lib:/usr/lib:/usr/sfw/lib:/opt/sfw/lib \
+		$PREFIX/libexec/kadmind &
+# end of start method
+;;
+
+stop)
+	pkill -x kadmind
+;;
+*)
+	echo "Usage: $0 {start|stop}"
+	exit 1
+	;;
+esac

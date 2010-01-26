@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
+<!--
+    $Id$
+-->
+<service_bundle type='manifest' name='bx:heimdal:kadmind'>
+
+	<service	name='bx/network/security/heimdal/kadmind'
+		type='service'
+		version='1'>
+
+		<create_default_instance enabled='false' />
+
+		<dependency	name='filesystem'
+			grouping='require_all'
+			restart_on='none'
+			type='service'>
+			<service_fmri value='svc:/system/filesystem/local' />
+		</dependency>
+
+		<dependency name='net-physical'
+			grouping='require_all'
+			restart_on='none'
+			type='service'>
+			<service_fmri value='svc:/network/physical' />
+		</dependency>
+
+		<exec_method name='start'
+			type='method'
+			exec='/opt/bx/heimdal/sbin/heimdal-kadmind.method start'
+			timeout_seconds='300' />
+
+		<exec_method name='stop'
+			type='method'
+			exec='/opt/bx/heimdal/sbin/heimdal-kadmind.method stop'
+			timeout_seconds='60' />
+
+		<template>
+			<common_name>
+				<loctext xml:lang='C'>
+				Heimdal kadmind
+				</loctext>
+			</common_name>
+		</template>
+	</service>
+
+</service_bundle>
