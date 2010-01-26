@@ -32,7 +32,7 @@
 
 		<exec_method name='stop'
 			type='method'
-			exec='/opt/bx/heimdal/sbin/heimdal-ipropd-master.method stop'
+			exec='/opt/bx/heimdal/sbin/heimdal-ipropd-slave.method stop'
 			timeout_seconds='60' />
 
 		<property_group name='Heimdal' type='application'>
