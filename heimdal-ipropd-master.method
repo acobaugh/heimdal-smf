@@ -16,7 +16,7 @@ start)
 ;;
 
 stop)
-	pkill ipropd-master
+	pkill -x ipropd-master
 ;;
 *)
 	echo "Usage: $0 {start|stop}"
