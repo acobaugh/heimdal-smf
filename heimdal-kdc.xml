@@ -27,12 +27,12 @@
 
 		<exec_method name='start'
 			type='method'
-			exec='/opt/bx/sbin/heimdal-kdc.method start'
+			exec='/opt/bx/heimdal/sbin/heimdal-kdc.method start'
 			timeout_seconds='300' />
 
 		<exec_method name='stop'
 			type='method'
-			exec='/opt/bx/sbin/heimdal-kdc.method stop'
+			exec='/opt/bx/heimdal/sbin/heimdal-kdc.method stop'
 			timeout_seconds='60' />
 
 		<template>
