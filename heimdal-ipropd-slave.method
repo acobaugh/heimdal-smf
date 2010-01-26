@@ -1,0 +1,26 @@
+#!/bin/sh
+
+#
+# $Id: openafs-server.method 4 2009-07-24 17:07:14Z phalenor $
+#
+
+. /lib/svc/share/smf_include.sh
+
+PREFIX="/opt/bx/heimdal"
+MASTER="`svcprop -p Heimdal/master svc:/bx/network/security/ipropd-slave`"
+
+case "$1" in
+start)
+	LD_LIBRARY_PATH=/lib:/usr/lib:/usr/sfw/lib:/opt/sfw/lib \
+		$PREFIX/libexec/ipropd-slave --detach --hostname=$MASTER
+# end of start method
+;;
+
+stop)
+	pkill ipropd-slave
+;;
+*)
+	echo "Usage: $0 {start|stop}"
+	exit 1
+	;;
+esac
