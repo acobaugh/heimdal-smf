@@ -11,7 +11,7 @@ PREFIX="/opt/bx/heimdal"
 case "$1" in
 start)
 	LD_LIBRARY_PATH=/lib:/usr/lib:/usr/sfw/lib:/opt/sfw/lib \
-		$PREFIX/libexec/ipropd-master --detach
+		$PREFIX/libexec/ipropd-master &
 # end of start method
 ;;
 
